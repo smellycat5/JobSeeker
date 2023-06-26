@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Actions\Auth\{LoginAction, RegisterAction, LogoutAction};
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\OrganizationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +33,9 @@ Route::prefix('user')->group(function () {
 });
 Route::middleware('auth:sanctum')->prefix('user')->group(function () {
     Route::get('logout', LogoutAction::class)->name('logout');
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::Resource('job', JobController::class);
+    Route::Resource('organization', OrganizationController::class);
 });
