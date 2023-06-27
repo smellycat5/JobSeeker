@@ -26,10 +26,7 @@ class JobController extends Controller
     {
         $data = $this->jobService->getJobs();
         $data = $this->job->with('organization')->get();
-        if ($data== null){
-            return $this->error([$data], 'There are currently no Job openings', Response::HTTP_NO_CONTENT);
-        }
-        return $this->success([$data], 'Projects retrieved successfully', Response::HTTP_OK);
+        return $this->success([$data], 'Jobs retrieved successfully', Response::HTTP_OK);
         // return view('Job.jobIndex', compact('jobs'));
     }
 
@@ -48,7 +45,7 @@ class JobController extends Controller
     {
         $data = $request->validated();
         $result = $this->job->create($data);
-        $this->success([$result], 'Job listing successfully created', Response::HTTP_OK);
+        return $this->success([$result], 'Job listing created successfully', Response::HTTP_OK);
         // return redirect()->route('job.index');
     }
 
