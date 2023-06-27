@@ -2,9 +2,13 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Carbon;
 use App\Models\Job;
 
-Class JobService{
-    // public function (){
-
+class JobService
+{
+    public function getJobs()
+    {
     }
+
+}

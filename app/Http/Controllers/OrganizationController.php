@@ -42,7 +42,7 @@ class OrganizationController extends Controller
      */
     public function store(OrganizationStoreRequest $request)
     {
-        $validated = $request-> validated();
+        $validated = $request->validated();
         Organization::create($validated);
         return $this->success([], 'Organization successfully added', Response::HTTP_OK);
         // return redirect()->route('organization.index');

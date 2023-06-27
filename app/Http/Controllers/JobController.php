@@ -12,19 +12,23 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    Protected JobService $jobService;
+    Protected $job, $jobService;
 
-    public function __construct(Jobservice $jobService)
+    public function __construct(Jobservice $jobService, Job $job)
     {
         $this->jobService =$jobService;
+        $this->job =$job;
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        
-        $data = Job::with('organization')->get();
+        $data = $this->jobService->getJobs();
+        $data = $this->job->with('organization')->get();
+        if ($data== null){
+            return $this->error([$data], 'There are currently no Job openings', Response::HTTP_NO_CONTENT);
+        }
         return $this->success([$data], 'Projects retrieved successfully', Response::HTTP_OK);
         // return view('Job.jobIndex', compact('jobs'));
     }
@@ -32,21 +36,20 @@ class JobController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        $organizations = Organization::with('job')->get();
-        return view('Job.create',compact('organizations'));
-    }
+    // public function create()
+    // {
+    //    return view('Job.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(JobStoreRequest $request)
     {
-        $validated = $request->validated();
-        Job::create($validated);
-        return redirect()->route('job.index');
-        // return $validated;
+        $data = $request->validated();
+        $result = $this->job->create($data);
+        $this->success([$result], 'Job listing successfully created', Response::HTTP_OK);
+        // return redirect()->route('job.index');
     }
 
     /**
@@ -54,7 +57,7 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        $job =Job::find($id);
+        $job =$this->job->find($id);
         return view('Job.details', compact('job'));
     }
 
