@@ -9,6 +9,7 @@ class JobService
 {
     public function getJobs()
     {
+        $data = Job::where('expired_at', '>=',Carbon::now())->get();
+        return $data;
     }
-
 }

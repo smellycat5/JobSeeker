@@ -9,12 +9,14 @@ use Illuminate\Http\Response;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use App\Services\OrganizationService;
+use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class OrganizationController extends Controller
 {
-    Protected OrganizationService $organizationService;
+    protected OrganizationService $organizationService;
 
-    Public function __construct(OrganizationService $organizationService)
+    public function __construct(OrganizationService $organizationService)
     {
         $this->organizationService = $organizationService;
     }
@@ -53,8 +55,8 @@ class OrganizationController extends Controller
      */
     public function show(Organization $organization)
     {
-        $data =Organization::find($organization->id)->with('jobs')->get();
-        return $this->success([$data],"", Response::HTTP_OK);
+            $data = Organization::with('jobs')->findorfail($organization->id);
+            return $this->success([$data], "", Response::HTTP_OK);
         // return view('Job.details', compact('job'));
     }
 
@@ -71,10 +73,10 @@ class OrganizationController extends Controller
      */
     public function update(OrganizationEditRequest $request, Organization $organization)
     {
-        $validated = $request-> validated();
+        $validated = $request->validated();
         $data = Organization::where('id', $organization->id)->firstorfail();
         $data->update($validated);
-        return $this->success([$data],"Organization details udpated!", Response::HTTP_OK);
+        return $this->success([$data], "Organization details udpated!", Response::HTTP_OK);
 
         // return redirect()->route('organization.index');
     }
@@ -84,8 +86,8 @@ class OrganizationController extends Controller
      */
     public function destroy(Organization $organization)
     {
-        $data =Organization::where('id', $organization->id)->firstorfail();
+        $data = Organization::where('id', $organization->id)->firstorfail();
         $data->delete();
-        return $this->success([],"Organization deleted!", Response::HTTP_OK);
+        return $this->success([], "Organization deleted!", Response::HTTP_OK);
     }
 }

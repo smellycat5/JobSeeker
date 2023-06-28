@@ -12,12 +12,12 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    Protected $job, $jobService;
+    protected $job, $jobService;
 
     public function __construct(Jobservice $jobService, Job $job)
     {
-        $this->jobService =$jobService;
-        $this->job =$job;
+        $this->jobService = $jobService;
+        $this->job = $job;
     }
     /**
      * Display a listing of the resource.
@@ -25,7 +25,6 @@ class JobController extends Controller
     public function index()
     {
         $data = $this->jobService->getJobs();
-        $data = $this->job->with('organization')->get();
         return $this->success([$data], 'Jobs retrieved successfully', Response::HTTP_OK);
         // return view('Job.jobIndex', compact('jobs'));
     }
@@ -52,10 +51,11 @@ class JobController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Job $job)
     {
-        $job =$this->job->find($id);
-        return view('Job.details', compact('job'));
+        $data = $this->job->find($job->id);
+        return $this->success([$data], '', Response::HTTP_OK);
+        // return view('Job.details', compact('job'));
     }
 
     /**
@@ -63,7 +63,7 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
-        return view('Job.edit',compact('job'));
+        return view('Job.edit', compact('job'));
     }
 
     /**
@@ -73,7 +73,7 @@ class JobController extends Controller
     {
         $validatedjob = $request->validated();
         $job->update($validatedjob);
-        
+
         return redirect()->route('job.index')->with('success');
     }
 
@@ -86,7 +86,8 @@ class JobController extends Controller
         return redirect()->route('job.index')->with('deleted');
     }
 
-    public function loginPage(){
+    public function loginPage()
+    {
         return view('Job.login');
     }
 }
