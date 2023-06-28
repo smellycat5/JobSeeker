@@ -58,13 +58,13 @@ class JobController extends Controller
         // return view('Job.details', compact('job'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Job $job)
-    {
-        return view('Job.edit', compact('job'));
-    }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  */
+    // public function edit(Job $job)
+    // {
+    //     return view('Job.edit', compact('job'));
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -72,9 +72,10 @@ class JobController extends Controller
     public function update(JobEditRequest $request, Job $job)
     {
         $validatedjob = $request->validated();
-        $job->update($validatedjob);
-
-        return redirect()->route('job.index')->with('success');
+        $data = $this->$job->where('id', $job->id)->firstorfail();
+        $data->update($validatedjob);
+        return $this->success([], 'successfully updated', Response::HTTP_OK);
+        // return redirect()->route('job.index')->with('success');
     }
 
     /**
