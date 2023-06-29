@@ -71,10 +71,10 @@ class JobController extends Controller
      */
     public function update(JobEditRequest $request, Job $job)
     {
-        $validatedjob = $request->validated();
-        $data = $this->$job->where('id', $job->id)->firstorfail();
-        $data->update($validatedjob);
-        return $this->success([], 'successfully updated', Response::HTTP_OK);
+        $validated = $request->validated();
+        $data = Job::where('id', $job->id)->firstorfail();
+        $data->update($validated);
+        return $this->success([$data], 'successfully updated', Response::HTTP_OK);
         // return redirect()->route('job.index')->with('success');
     }
 
