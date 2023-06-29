@@ -53,8 +53,7 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        $data = $this->job->find($job->id);
-        return $this->success([$data], '', Response::HTTP_OK);
+        return $this->success([$job], '', Response::HTTP_OK);
         // return view('Job.details', compact('job'));
     }
 
@@ -72,9 +71,8 @@ class JobController extends Controller
     public function update(JobEditRequest $request, Job $job)
     {
         $validated = $request->validated();
-        $data = Job::where('id', $job->id)->firstorfail();
-        $data->update($validated);
-        return $this->success([$data], 'successfully updated', Response::HTTP_OK);
+        $job->update($validated);
+        return $this->success([$job], 'successfully updated', Response::HTTP_OK);
         // return redirect()->route('job.index')->with('success');
     }
 
@@ -84,7 +82,7 @@ class JobController extends Controller
     public function destroy(Job $job)
     {
         $job->delete();
-        return redirect()->route('job.index')->with('deleted');
+        return $this->success([], "Job listing removed!", Response::HTTP_OK);
     }
 
     public function loginPage()

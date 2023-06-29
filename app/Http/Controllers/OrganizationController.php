@@ -55,8 +55,7 @@ class OrganizationController extends Controller
      */
     public function show(Organization $organization)
     {
-            $data = Organization::with('jobs')->findorfail($organization->id);
-            return $this->success([$data], "", Response::HTTP_OK);
+            return $this->success([$organization], "", Response::HTTP_OK);
         // return view('Job.details', compact('job'));
     }
 
@@ -74,9 +73,8 @@ class OrganizationController extends Controller
     public function update(OrganizationEditRequest $request, Organization $organization)
     {
         $validated = $request->validated();
-        $data = Organization::where('id', $organization->id)->firstorfail();
-        $data->update($validated);
-        return $this->success([$data], "Organization details udpated!", Response::HTTP_OK);
+        $organization->update($validated);
+        return $this->success([$organization], "Organization details udpated!", Response::HTTP_OK);
 
         // return redirect()->route('organization.index');
     }
@@ -86,8 +84,7 @@ class OrganizationController extends Controller
      */
     public function destroy(Organization $organization)
     {
-        $data = Organization::where('id', $organization->id)->firstorfail();
-        $data->delete();
+        $organization->delete();
         return $this->success([], "Organization deleted!", Response::HTTP_OK);
     }
 }
