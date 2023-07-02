@@ -1,5 +1,7 @@
+
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter';
     margin: 0;
     padding: 0;
 
@@ -155,24 +157,31 @@ footer {
     align-items: center;
     height: 75vh;
     border-radius: 10px;
-    background-color: #D94452;
+    /* background-color: #D94452; */
 }
 
 
 .login-form {
-    width: 400px;
-    height: 350px;
+    width: 450px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #D9D9D9;
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    align-content: center;
 }
 
 .login-form input {
     width: 100%;
     padding: 10px;
-    margin-top: 20px;
+    border-style: solid;
+    border-color: #a8a8a8;
+    background-color: #939090;
+    /* border-radius: 1px; */
+}
+
+input::placeholder {
+    color: rgb(73, 72, 72); /* Change the color to your desired value */
 }
 
 .login-form button {

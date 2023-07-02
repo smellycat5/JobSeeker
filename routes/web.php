@@ -19,7 +19,8 @@ use App\Http\Controllers\OrganizationController;
 */
 
 Route::get('/', function () {
-    return view('welcome2');
+    // redirect('home');
+    return view('home');
 });
 
 
@@ -28,16 +29,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('test', [UserController::class, 'test']);
 
-// Route::group(function () {
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'loginUser'])->name('loginUser');
-// Route::post('register', AuthController::class)->name('register');
+Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::post('register', [AuthController::class, 'registerUser'])->name('registerUser');
+
 //     Route::post('forgot-password', ForgotPasswordAction::class)->name('forgot-password');
 //     Route::post('reset-password', ResetPasswordAction::class)->name('reset-password');
 //     Route::get('verify/reset-token', VerifyPasswordTokenAction::class);
 //     Route::get('verify/invite-token', VerifyInviteTokenAction::class);
-// });
-Route::middleware('auth:sanctum')->prefix('user')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('logout', LogoutAction::class)->name('logout');
 });
 
