@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Organization;
 use App\Http\Requests\OrganizationStoreRequest;
 use App\Http\Requests\OrganizationEditRequest;
 use Illuminate\Http\Response;
-use App\Models\Job;
 use Illuminate\Http\Request;
 use App\Services\OrganizationService;
-use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class OrganizationController extends Controller

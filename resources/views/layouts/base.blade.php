@@ -18,6 +18,11 @@
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
+                {{-- <li><a href="#">{{ auth()->name }}</a></li> --}}
+
+            </ul>
+            <ul>
+                <li><a href="#">{{ auth()->user()->name }}</a></li>
             </ul>
         </nav>
     </header>

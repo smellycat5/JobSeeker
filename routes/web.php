@@ -3,10 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Actions\Auth\{LoginAction, RegisterAction, LogoutAction};
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\JobController;
-use App\Http\Controllers\OrganizationController;
+// use App\Http\Controllers\Actions\Auth\{LoginAction, RegisterAction, LogoutAction};
+use App\Http\Controllers\Web\Auth\AuthController;
+use App\Http\Controllers\Web\{OrganizationController,JobController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,9 +37,10 @@ Route::post('register', [AuthController::class, 'registerUser'])->name('register
 //     Route::post('reset-password', ResetPasswordAction::class)->name('reset-password');
 //     Route::get('verify/reset-token', VerifyPasswordTokenAction::class);
 //     Route::get('verify/invite-token', VerifyInviteTokenAction::class);
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('logout', LogoutAction::class)->name('logout');
-});
+
+// Route::middleware('auth:sanctum')->group(function () {
+//     Route::get('logout', LogoutAction::class)->name('logout');
+// });
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::Resource('job', JobController::class);

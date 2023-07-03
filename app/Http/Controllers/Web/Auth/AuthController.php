@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -19,11 +19,12 @@ class AuthController extends Controller
     public function loginUser(LoginRequest $request)
     {
         $data = $request->validated();
-        if (!Auth::attempt($data)) {
-            return "failed";
+        if (Auth::attempt($data)) {
+            return redirect()->intended('/job');
         }
-        $user = Auth::user();
-        return "success";
+        return back()->withErrors([
+            'email' => 'The credentials may be incorrect.',
+        ]);
     }
 
     public function register()

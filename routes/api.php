@@ -3,9 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Actions\Auth\{LoginAction, RegisterAction, LogoutAction};
-use App\Http\Controllers\JobController;
-use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\Api\Actions\Auth\{LoginAction, RegisterAction, LogoutAction};
+use App\Http\Controllers\Api\{JobController,OrganizationController};
 
 /*
 |--------------------------------------------------------------------------

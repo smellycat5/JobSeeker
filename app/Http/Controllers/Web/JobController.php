@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use App\Models\Job;
-use App\Models\Organization;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\JobStoreRequest;
 use App\Http\Requests\JobEditRequest;
 use App\Services\JobService;
@@ -24,9 +24,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        $data = $this->jobService->getJobs();
-        return $this->success([$data], 'Jobs retrieved successfully', Response::HTTP_OK);
-        // return view('Job.jobIndex', compact('jobs'));
+        $jobs = $this->jobService->getJobs();
+        // return $this->success([$data], 'Jobs retrieved successfully', Response::HTTP_OK);
+        return view('components.job', compact('jobs'));
     }
 
     /**

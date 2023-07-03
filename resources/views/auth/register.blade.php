@@ -24,9 +24,9 @@
                 </div>
 
                 {{-- <!-- Confirm Password -->
-        <div class="mt-5">
-            <input type="email" name="" placeholder="Confirm Password" required>
-        </div> --}}
+                <div class="mt-5">
+                <input type="email" name="" placeholder="Confirm Password" required>
+                </div> --}}
 
                 <div class="flex items-center justify-end mt-4">
                     <a href="{{ route('login') }}">
