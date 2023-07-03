@@ -22,7 +22,7 @@
 
             </ul>
             <ul>
-                <li><a href="#">{{ auth()->user()->name }}</a></li>
+                {{-- <li><a href="#">{{ auth()->user()->name }}</a></li> --}}
             </ul>
         </nav>
     </header>

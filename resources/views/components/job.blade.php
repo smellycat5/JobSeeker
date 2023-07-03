@@ -1,7 +1,7 @@
 @extends('layouts.base')
 @section('content')
     <section>
-        <p>{{ auth()->user()->name }}</p>
+        {{-- <p>{{ auth()->user()->name }}</p> --}}
         @if ($jobs->isEmpty())
             <p>No job cards available.</p>
         @else
