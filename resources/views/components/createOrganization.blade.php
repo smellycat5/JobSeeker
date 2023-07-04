@@ -3,8 +3,8 @@
 <div class="content-container">
     <section>
         <div class="container">
-            <form class="login-form" method="POST" action="{{ route('job.store') }}">
-                <h3 class="center-text">Create a Job Listing</h3>
+            <form class="login-form" method="POST" action="{{ route('organization.store') }}">
+                <h3 class="center-text">Enter Organization Details</h3>
                 
                 @csrf
                 
@@ -22,9 +22,7 @@
                 <div>
                     <input class="mt-4" type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
                 </div>
-
-                <input type="hidden" name="organization_id" value={{  }}>
-                
+                <input type="hidden" name="user_id" value={{ auth()->user()->id}}>
                 <div>
                     <button type="submit">Submit</button>
                 </div>

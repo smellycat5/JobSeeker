@@ -35,10 +35,10 @@ class OrganizationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    // public function create()
-    // {
-    //     return view('Organization.create');
-    // }
+    public function create()
+    {
+        return view('components.createOrganization');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -47,8 +47,8 @@ class OrganizationController extends Controller
     {
         $validated = $request->validated();
         $data = Organization::create($validated);
-        return $this->success([$data], 'Organization successfully added', Response::HTTP_OK);
-        // return redirect()->route('organization.index');
+        // return $this->success([$data], 'Organization successfully added', Response::HTTP_OK);
+        return redirect()->route('organization.index');
     }
 
     /**
