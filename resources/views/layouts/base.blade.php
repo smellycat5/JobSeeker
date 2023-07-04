@@ -12,21 +12,12 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                {{-- <li><a href="#">{{ auth()->name }}</a></li> --}}
-
-            </ul>
-            <ul>
-                {{-- <li><a href="#">{{ auth()->user()->name }}</a></li> --}}
-            </ul>
-        </nav>
-    </header>
-    @yield('content')
+    {{-- <header> --}}
+        <x-navbar></x-navbar> <!-- Include the navbar component -->
+    {{-- </header> --}}
+    <main>    
+        @yield('content')
+    </main>
 </body>
 
 </html>

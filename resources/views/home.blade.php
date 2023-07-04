@@ -1,12 +1,13 @@
 @extends('layouts.base')
 @section('content')
+<div class="home-container">
     <section class="hero">
         <div class="hero-content">
             <h1>Introducing JobSeeker: Your Path to Professional Opportunities</h1>
             <p>Discover your dream career with JobConnect, the go-to platform for job seekers and professionals. Find
                 exciting job openings, connect with top employers, and access valuable resources to excel in your field.
                 Start your journey to success with JobConnect today.</p>
-            <a href="login" class="cta-button">Get Started</a>
+            <a href="register" class="cta-button">Get Started</a>
         </div>
     </section>
     <section class="features">
@@ -44,4 +45,5 @@
             </div>
         </div>
     </section>
+</div>
 @endsection

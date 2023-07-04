@@ -38,4 +38,10 @@ class AuthController extends Controller
         User::create($data);
         return "success";
     }
+
+    public function logout()
+    {
+        auth()->guard('web')->logout();
+        return redirect('/');
+    }
 }

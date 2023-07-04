@@ -1,31 +1,99 @@
-
-
-body {
+/* body {
     font-family: 'Inter';
-    margin: 0;
+    margin-left: 5rem;
+    margin-right: 5rem;
     padding: 0;
-
+    overflow-y: scroll;
+} */
+.content-container{
+    font-family: 'Inter';
+    margin-left: 5rem;
+    margin-right: 5rem;
+    padding: 0;
 }
-
-header {
+.home-container{
+    font-family: 'Inter';
+    padding: 0;
+}
+nav {
     background-color: #0f0e0e;
-    color: #fff;
     padding: 20px;
+    top: 0px;
     position: sticky;
-    top: 0;
-    z-index: 100;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: right;
-    text-decoration: none;
+.navbar-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* justify-content: center; */
+  }
+  
+  .fixed-div {
+    flex-shrink: 0;
+  }  
+
+.navbar-center {
+    display: flex;
+    justify-content: center;
     color: #fff;
+    gap: 5rem;
+}
+a{
+    color:#fff; 
+    text-decoration: none;
+    &:hover{
+        color: #D94452;
+    text-decoration: none;
+    }
+}
+.navbar-profile{
+    display:flex;
+    justify-content: flex-end;
 }
 
-nav ul li {
+.color-blue a{
+    color: rgb(11, 11, 161);
+    &:hover{
+        color: #D94452;
+    }
+}
+
+.logout-button {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    margin: 0 20px;
+padding: 0;
+}
+
+.logout-button:hover{
+    color: #D94452;
+}
+.center-text{
+    text-align: center;
+}
+
+body::-webkit-scrollbar {
+    width: 0.5em;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #888;
+  }
+  
+  body::-webkit-scrollbar-thumb:hover {
+    background-color: #D94452;
+  }
+
+/* 
+
+nav li {
     display: inline-block;
     margin-right: 20px;
     text-decoration: none;
@@ -33,16 +101,11 @@ nav ul li {
     padding: 5px;
 }
 
-nav ul li a {
+nav li a {
     color: #fff;
     text-decoration: none;
     padding: 20px;
-}
-
-nav ul li a:hover {
-    color: #D94452;
-    text-decoration: none;
-}
+} */
 
 .hero {
     padding: 150px 0;
@@ -181,7 +244,8 @@ footer {
 }
 
 input::placeholder {
-    color: rgb(73, 72, 72); /* Change the color to your desired value */
+    color: rgb(73, 72, 72);
+    /* Change the color to your desired value */
 }
 
 .login-form button {
@@ -194,16 +258,17 @@ input::placeholder {
     cursor: pointer;
     margin: 0 auto;
     margin-top: 50px;
-    display:block;
+    display: block;
 }
 
 .login-form button:hover {
     background-color: #555;
 }
 
-.job-card-container{
+.job-card-container {
     margin: 10%;
 }
+
 .job-card-list {
     list-style-type: none;
     padding: 0;
@@ -216,6 +281,7 @@ input::placeholder {
     margin-bottom: 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .job-card:hover {
     /* background-color: #ffedef; */
     transform: scale(1.05);
@@ -228,7 +294,8 @@ input::placeholder {
 .job-card p {
     margin-bottom: 10px;
 }
-.title{
+
+.title {
     margin-left: 30px;
     margin-top: 50px;
 }

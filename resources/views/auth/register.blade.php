@@ -4,7 +4,7 @@
         <div class='container'>
             <form class='login-form' method="POST" action="{{ route('register') }}">
                 <div>
-                    <h2>Sign up</h2>
+                    <h2 class="center-text">Sign up</h2>
                 </div>
                 @csrf
 
@@ -28,9 +28,9 @@
                 <input type="email" name="" placeholder="Confirm Password" required>
                 </div> --}}
 
-                <div class="flex items-center justify-end mt-4">
-                    <a href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
+                <div class="center-text mt-4 color-blue">
+                    <a  href="{{ route('login') }}" >
+                        Already registered?
                     </a>
 
                     <button type="submit">Register</button>
