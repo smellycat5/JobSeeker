@@ -26,7 +26,7 @@ class JobStoreRequest extends FormRequest
             'description'=> 'required',
             'salary'=>'required|integer',
             'location'=>'required',
-            'organization_id'=> 'required'
+            'organization_id'=> 'required, exists:organization'
         ];
     }
 }

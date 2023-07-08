@@ -27,16 +27,7 @@ class JobController extends Controller
     {
         $data = $this->jobService->getJobs();
         return $this->success([$data], 'Jobs retrieved successfully', Response::HTTP_OK);
-        // return view('Job.jobIndex', compact('jobs'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    // public function create()
-    // {
-    //    return view('Job.create');
-    // }
 
     /**
      * Store a newly created resource in storage.
@@ -46,7 +37,6 @@ class JobController extends Controller
         $data = $request->validated();
         $result = $this->job->create($data);
         return $this->success([$result], 'Job listing created successfully', Response::HTTP_OK);
-        // return redirect()->route('job.index');
     }
 
     /**
@@ -55,16 +45,7 @@ class JobController extends Controller
     public function show(Job $job)
     {
         return $this->success([$job], '', Response::HTTP_OK);
-        // return view('Job.details', compact('job'));
     }
-
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  */
-    // public function edit(Job $job)
-    // {
-    //     return view('Job.edit', compact('job'));
-    // }
 
     /**
      * Update the specified resource in storage.
@@ -74,7 +55,6 @@ class JobController extends Controller
         $validated = $request->validated();
         $job->update($validated);
         return $this->success([$job], 'successfully updated', Response::HTTP_OK);
-        // return redirect()->route('job.index')->with('success');
     }
 
     /**

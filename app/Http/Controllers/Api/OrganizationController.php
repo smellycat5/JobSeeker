@@ -25,18 +25,9 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        $data = Organization::with('jobs')->get();
+        $data = $this->organizationService->with('jobs')->get();
         return $this->success([$data], 'organizations retrieved successfully', Response::HTTP_OK);
-        // return view('Organization.index', compact('data'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    // public function create()
-    // {
-    //     return view('Organization.create');
-    // }
 
     /**
      * Store a newly created resource in storage.
@@ -44,9 +35,8 @@ class OrganizationController extends Controller
     public function store(OrganizationStoreRequest $request)
     {
         $validated = $request->validated();
-        $data = Organization::create($validated);
+        $data = $this->organizationService->create($validated);
         return $this->success([$data], 'Organization successfully added', Response::HTTP_OK);
-        // return redirect()->route('organization.index');
     }
 
     /**
@@ -54,17 +44,8 @@ class OrganizationController extends Controller
      */
     public function show(Organization $organization)
     {
-            return $this->success([$organization], "", Response::HTTP_OK);
-        // return view('Job.details', compact('job'));
+        return $this->success([$organization], "", Response::HTTP_OK);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    // public function edit(Organization $organization)
-    // {
-    //     return view('Organization.edit',compact('organization'));
-    // }
 
     /**
      * Update the specified resource in storage.
@@ -74,8 +55,6 @@ class OrganizationController extends Controller
         $validated = $request->validated();
         $organization->update($validated);
         return $this->success([$organization], "Organization details udpated!", Response::HTTP_OK);
-
-        // return redirect()->route('organization.index');
     }
 
     /**
