@@ -13,11 +13,11 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class OrganizationController extends Controller
 {
-    protected OrganizationService $organizationService;
+    protected Organization $organization;
 
-    public function __construct(OrganizationService $organizationService)
+    public function __construct(Organization $organization)
     {
-        $this->organizationService = $organizationService;
+        $this->organization = $organization;
     }
 
     /**
@@ -25,7 +25,7 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        $data = $this->organizationService->with('jobs')->get();
+        $data = $this->organization->with('jobs')->get();
         return $this->success([$data], 'organizations retrieved successfully', Response::HTTP_OK);
     }
 
@@ -35,7 +35,7 @@ class OrganizationController extends Controller
     public function store(OrganizationStoreRequest $request)
     {
         $validated = $request->validated();
-        $data = $this->organizationService->create($validated);
+        $data = $this->organization->create($validated);
         return $this->success([$data], 'Organization successfully added', Response::HTTP_OK);
     }
 
