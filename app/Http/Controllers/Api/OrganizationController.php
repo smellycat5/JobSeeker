@@ -55,7 +55,7 @@ class OrganizationController extends Controller
         $validated = $request->validated();
         $organization->update($validated);
         return $this->success([$organization], "Organization details udpated!", Response::HTTP_OK);
-    }
+        }
 
     /**
      * Remove the specified resource from storage.

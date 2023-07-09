@@ -29,6 +29,7 @@ class RegisterAction extends Controller
     {
         $data = $request->validated();
         $user = User::create($data);
+        $this->userService->sendVerifyEmail($user);
         return $this->success([$user], "User Successfully Registered");
     }
 }
