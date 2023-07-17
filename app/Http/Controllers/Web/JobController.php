@@ -53,8 +53,8 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        return $this->success([$job], '', Response::HTTP_OK);
-        // return view('Job.details', compact('job'));
+        // return $this->success([$job], '', Response::HTTP_OK);
+        return view('components.showJob', compact('job'));
     }
 
     /**

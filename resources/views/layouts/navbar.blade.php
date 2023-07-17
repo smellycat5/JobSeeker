@@ -9,12 +9,12 @@
 
 <nav class="navbar-container">
     <div class="navbar-logo">
-        <a href='/'>Logo</a>
+        <a href='/' class="theme">Logo</a>
     </div>
     <div class="navbar-center">
-        <a href="/">Home</a>
-        <a href="/job">Jobs</a>
-        <a href="/about">About</a>
+        <a href="/" class="theme">Home</a>
+        <a href="/job" class="theme">Jobs</a>
+        <a href="/about" class="theme"  >About</a>
     </div>
     <div class="navbar-profile">
         @auth
