@@ -6,11 +6,13 @@
                 <div>
                     <h2 class="center-text">Sign up</h2>
                 </div>
+
                 @csrf
 
                 <!-- Name -->
                 <div class="mt-5">
                     <input type="name" name="name" placeholder="Name" required>
+
                 </div>
 
                 <!-- Email Address -->
@@ -29,12 +31,22 @@
                 </div> --}}
 
                 <div class="center-text mt-4 color-blue">
-                    <a  href="{{ route('login') }}" >
+                    <a href="{{ route('login') }}">
                         Already registered?
                     </a>
-
-                    <button type="submit">Register</button>
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger mt-4">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <button type="submit">Register</button>
+
             </form>
         </div>
     </section>

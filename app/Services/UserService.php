@@ -12,19 +12,15 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Mockery\Exception;
 use App\Http\Resources\UserResource;
+use App\Notifications\UserVerifyEmail;
 
 class UserService
 {
-    public function generateToken(): string
-    {
-        return Str::random(50);
-    }
-
+    
     public function sendVerifyEmail($user)
     {
-        $token = $this->generateToken();
-        $url = config('frontend.url') . '/register/' . $token . '?email=' . $user->email . '&name=' . urlencode($user->name);
-        Mail::to($email)->send(new InviteCreated($url));
+        $token = Str::random(50);
+        $user->notify(new UserVerifyEmail($token, $user->name));
         return true;
     }
 }

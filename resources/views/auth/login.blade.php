@@ -7,28 +7,29 @@
                 <h2 class="center-text">Log In</h2>
                 <!-- Email -->
                 <div class="mt-5">
-                    <input type="email" name="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <input type="email" name="email" placeholder="Email" class="form-control" required autocomplete="email"
+                        autofocus>
                 </div>
 
                 <!-- Password -->
                 <div class="mt-5">
-                    <input type="password" name="password" class="form-control @error('email') is-invalid @enderror" placeholder="Password" required>
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
                 </div>
-        
+
                 <div class="center-text mt-4 color-blue">
                     <a href="{{ route('register') }}">
                         Create an Account
                     </a>
+                </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <button type="submit">Login</button>
             </form>

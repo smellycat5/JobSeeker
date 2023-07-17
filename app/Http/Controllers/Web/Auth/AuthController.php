@@ -7,10 +7,18 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function login()
     {
         return view('auth.login');
@@ -35,8 +43,9 @@ class AuthController extends Controller
     public function registerUser(UserStoreRequest $request)
     {
         $data = $request->validated();
-        User::create($data);
-        return "success";
+        $user = User::create($data);
+        $this->userService->sendVerifyEmail($user);
+        return redirect('/register')->withErrors('Successfully registered'); // placeholder code, needs changes
     }
 
     public function logout()

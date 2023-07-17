@@ -37,4 +37,6 @@ Route::middleware('auth:sanctum')->prefix('user')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::Resource('job', JobController::class);
     Route::Resource('organization', OrganizationController::class);
+    Route::get('user/mail',[UserController::class, 'test']);
 });
+
