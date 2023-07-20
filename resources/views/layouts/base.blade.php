@@ -12,8 +12,10 @@
 </head>
 
 <body>
-    {{-- <header> --}}
+    {{-- <header> --}}<div>
+
         <x-navbar></x-navbar> <!-- Include the navbar component -->
+    </div>
     {{-- </header> --}}
     <main>    
         @yield('content')

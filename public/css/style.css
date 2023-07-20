@@ -5,6 +5,17 @@
     padding: 0;
     overflow-y: scroll;
 } */
+
+html{
+    scroll-behavior: smooth;
+}
+
+.application{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 .content-container {
     font-family: 'Inter';
     margin-left: 5rem;

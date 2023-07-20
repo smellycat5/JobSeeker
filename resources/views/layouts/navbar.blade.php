@@ -1,12 +1,3 @@
-{{-- <nav>
-    <ul>
-        <li><a href="{{ url('/') }}">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Ram</a></li>
-    </ul>
-</nav> --}}
-
 <nav class="navbar-container">
     <div class="navbar-logo">
         <a href='/' class="theme">Logo</a>
