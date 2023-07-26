@@ -1,4 +1,4 @@
-<nav class="navbar-container">
+<nav>
     <div class="navbar-logo">
         <a href='/' class="theme">Logo</a>
     </div>

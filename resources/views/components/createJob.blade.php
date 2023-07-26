@@ -22,9 +22,6 @@
                 <div>
                     <input class="mt-4" type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
                 </div>
-
-                <input type="hidden" name="organization_id" value={{  }}>
-                
                 <div>
                     <button type="submit">Submit</button>
                 </div>

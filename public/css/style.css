@@ -31,16 +31,12 @@ html{
 nav {
     background-color: #0f0e0e;
     padding: 20px;
-    top: 0px;
     position: sticky;
+    top: 0px;
     justify-content: space-between;
     align-items: center;
-}
-
-.navbar-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    /* justify-content: center; */
 }
 
 .fixed-div {
@@ -69,8 +65,8 @@ nav {
     justify-content: flex-end;
 }
 
-.color-blue a {
-    color: rgb(11, 11, 161);
+.color a {
+    color: rgb(0, 0, 0);
 
     &:hover {
         color: #D94452;
@@ -232,15 +228,15 @@ footer {
     text-align: center;
 }
 
-.container {
+/* .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 75vh;
     border-radius: 10px;
-    /* background-color: #D94452; */
-}
 
+} */
+/* 
 
 .login-form {
     width: 450px;
@@ -258,12 +254,10 @@ footer {
     border-style: solid;
     border-color: #a8a8a8;
     background-color: #b6b5b5;
-    /* border-radius: 1px; */
 }
 
 input::placeholder {
     color: rgb(73, 72, 72);
-    /* Change the color to your desired value */
 }
 
 .login-form button {
@@ -281,7 +275,7 @@ input::placeholder {
 
 .login-form button:hover {
     background-color: #555;
-}
+} */
 
 .job-card-container {
     margin: 10%;
@@ -332,8 +326,9 @@ input::placeholder {
     padding: 1rem;
     margin-bottom: 1rem;
 }
-
+/* 
 .cards {
+    color:#504b4b;
     text-decoration: none;
 
     &:hover {
@@ -341,4 +336,4 @@ input::placeholder {
         text-decoration: none;
 
     }
-}
+} */

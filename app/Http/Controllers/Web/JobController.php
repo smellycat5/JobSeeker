@@ -25,7 +25,6 @@ class JobController extends Controller
     public function index()
     {
         $jobs = $this->jobService->getJobs();
-        // return $this->success([$data], 'Jobs retrieved successfully', Response::HTTP_OK);
         return view('components.job', compact('jobs'));
     }
 
