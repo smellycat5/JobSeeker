@@ -7,7 +7,11 @@
             <p>Discover your dream career with JobConnect, the go-to platform for job seekers and professionals. Find
                 exciting job openings, connect with top employers, and access valuable resources to excel in your field.
                 Start your journey to success with JobConnect today.</p>
-            <a href="register" class="cta-button">Get Started</a>
+            @auth
+            <a href="job" class="cta-button">Find Jobs</a>
+            @else
+            <a href="register" class="cta-button">Get Started</a>   
+            @endauth
         </div>
     </section>
     <section class="features">

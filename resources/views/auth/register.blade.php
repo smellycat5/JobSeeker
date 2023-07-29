@@ -1,53 +1,61 @@
 @extends('layouts.base')
 @section('content')
-    <section>
-        <div class='container'>
-            <form class='login-form' method="POST" action="{{ route('register') }}">
-                <div>
-                    <h2 class="center-text">Sign up</h2>
+<section>
+    <div class="container d-flex justify-content-center  mt-5">
+        <div class="col-md-5 border bg-dark-subtle">
+            <form class="card p-5 border-0 rounded-0 bg-dark-subtle" method="POST" action="{{ route('register') }}">
+                <div class="text-center">
+                    <h2 class="font-bold">{{ __('Sign up') }}</h2>
                 </div>
 
                 @csrf
 
                 <!-- Name -->
-                <div class="mt-5">
-                    <input type="name" name="name" placeholder="Name" required>
-
+                <div class="form-group mt-3">
+                    <label for="name" class="col-form-label">Name</label>
+                    <input type="name" name="name" class="form-control form-control-lg" required>
                 </div>
 
                 <!-- Email Address -->
-                <div class="mt-5">
-                    <input type="email" name="email" placeholder="Email" required>
+                <div class="form-group mt-3">
+                    <label for="email" class="col-form-label">Email</label>
+                    <input type="email" name="email" class="form-control form-control-lg" required>
                 </div>
 
                 <!-- Password -->
-                <div class="mt-5">
-                    <input type="password" name="password" placeholder="Password" required>
+                <div class="form-group mt-3">
+                    <label for="password" class="col-form-label">Password</label>
+
+                    <input type="password" name="password" class="form-control form-control-lg" required>
                 </div>
 
                 {{-- <!-- Confirm Password -->
-                <div class="mt-5">
-                <input type="email" name="" placeholder="Confirm Password" required>
+                <div class="form-group mt-5">
+                    <input type="password" name="password_confirmation" class="form-control"
+                        placeholder="Confirm Password" required>
                 </div> --}}
 
-                <div class="center-text mt-4 color-blue">
+                <div class="text-center mt-4 color-blue">
                     <a href="{{ route('login') }}">
                         Already registered?
                     </a>
                 </div>
                 @if ($errors->any())
-                    <div class="alert alert-danger mt-4">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                <div class="alert alert-danger mt-4">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
                 @endif
 
-                <button type="submit">Register</button>
+                <button type="submit" class="btn btn-primary btn-block mt-4">
+                    {{ __('Register') }}
+                </button>
 
             </form>
         </div>
-    </section>
+    </div>
+</section>
 @endsection

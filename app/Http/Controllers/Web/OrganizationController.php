@@ -15,11 +15,13 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class OrganizationController extends Controller
 {
+    protected Organization $organization;
     protected OrganizationService $organizationService;
 
-    public function __construct(OrganizationService $organizationService)
+    public function __construct(OrganizationService $organizationService, Organization $organization)
     {
         $this->organizationService = $organizationService;
+        $this->organization = $organization;
     }
 
     /**
@@ -27,17 +29,26 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        $organizations = Organization::with('jobs')->get();
-        // return $this->success([$data], 'organizations retrieved successfully', Response::HTTP_OK);
-        return view('components.organization', compact('organizations'));
+        $organizations = $this->organization->with('jobs')->latest()->get();
+        return view('components.organization.index', compact('organizations'));
     }
 
+    /**
+     * Display a listing of the user owned resource.
+     */
+    public function userIndex()
+    {
+        $user = auth()->id();
+        $organizations= $this->organization->with('jobs')->where('user_id', "$user")->latest()->get();
+        return view('components.organization.index', compact('organizations'));
+
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('components.createOrganization');
+        return view('components.organization.create');
     }
 
     /**
@@ -46,9 +57,9 @@ class OrganizationController extends Controller
     public function store(OrganizationStoreRequest $request)
     {
         $validated = $request->validated();
-        $data = Organization::create($validated);
-        // return $this->success([$data], 'Organization successfully added', Response::HTTP_OK);
-        return redirect()->route('organization.index');
+        $validated['user_id'] = auth()->id();
+        $this->organization->create($validated);
+        return redirect()->route( 'organization.index');
     }
 
     /**
@@ -56,17 +67,16 @@ class OrganizationController extends Controller
      */
     public function show(Organization $organization)
     {
-            // return $this->success([$organization], "", Response::HTTP_OK);
-        return view('components.details', compact('$organization'));
+        return view('components.details', compact('organization'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    // public function edit(Organization $organization)
-    // {
-    //     return view('Organization.edit',compact('organization'));
-    // }
+    public function edit(Organization $organization)
+    {
+        return view('Organization.edit',compact('organization'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -75,7 +85,7 @@ class OrganizationController extends Controller
     {
         $validated = $request->validated();
         $organization->update($validated);
-        return $this->success([$organization], "Organization details udpated!", Response::HTTP_OK);
+        return redirect()->route( 'organization.index');
 
         // return redirect()->route('organization.index');
     }
@@ -86,6 +96,6 @@ class OrganizationController extends Controller
     public function destroy(Organization $organization)
     {
         $organization->delete();
-        return $this->success([], "Organization deleted!", Response::HTTP_OK);
+        return redirect()->route( 'organization.index');
     }
 }

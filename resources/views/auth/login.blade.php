@@ -5,9 +5,8 @@
             <div class="col-md-5">
                 <div class="card p-5 border-0 rounded-0 bg-dark-subtle">
                     <!-- Remove rounded-lg class and add rounded-0 class -->
-                    <div class="card-header text-center border-0 rounded-0 pt-3">
-                        <!-- Add rounded-0 class -->
-                        <h4 class="font-bold">{{ __('Login') }}</h4>
+                    <div class="text-center">
+                        <h2 class="font-bold">{{ __('Login') }}</h2>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
@@ -15,7 +14,7 @@
                             <div class="form-group">
                                 <label for="email" class="font-bold">{{ __('Email') }}</label>
                                 <input id="email" type="email"
-                                    class="form-control @error('email') is-invalid @enderror" name="email"
+                                    class="form-control form-control-lg @error('email') is-invalid @enderror" name="email"
                                     value="{{ old('email') }}" required autocomplete="email" autofocus>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -26,7 +25,7 @@
                             <div class="form-group">
                                 <label for="password" class="font-bold">{{ __('Password') }}</label>
                                 <input id="password" type="password"
-                                    class="form-control @error('password') is-invalid @enderror" name="password" required
+                                    class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required
                                     autocomplete="current-password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

@@ -38,7 +38,7 @@
 
                 <!-- Add more fields as needed for the application form -->
 
-                <button type="submit">Submit Application</button>
+                <button type="submit" class="cta-button">Submit Application</button>
             </form>
         </div>
     </section>

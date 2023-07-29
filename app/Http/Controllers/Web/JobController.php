@@ -33,7 +33,8 @@ class JobController extends Controller
      */
     public function create()
     {
-        return view('components.createJob');
+        $organizations = auth()->user()->organizations()->get();
+        return view('components.createJob', compact(('organizations')));
     }
 
     /**
@@ -43,7 +44,6 @@ class JobController extends Controller
     {
         $data = $request->validated();
         $result = $this->job->create($data);
-        // return $this->success([$result], 'Job listing created successfully', Response::HTTP_OK);
         return redirect()->route('job.index');
     }
 

@@ -4,7 +4,8 @@
     </div>
     <div class="navbar-center">
         <a href="/" class="theme">Home</a>
-        <a href="/job" class="theme">Jobs</a>
+        <a href="/organization" class="theme">Organizations</a>
+        <a href="{{ route('job.index') }}" class="theme">View Jobs</a>
         <a href="/about" class="theme"  >About</a>
     </div>
     <div class="navbar-profile">
