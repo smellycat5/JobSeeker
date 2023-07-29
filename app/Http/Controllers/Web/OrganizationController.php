@@ -75,7 +75,7 @@ class OrganizationController extends Controller
      */
     public function edit(Organization $organization)
     {
-        return view('Organization.edit',compact('organization'));
+        return view('components.organization.edit',compact('organization'));
     }
 
     /**
@@ -85,9 +85,7 @@ class OrganizationController extends Controller
     {
         $validated = $request->validated();
         $organization->update($validated);
-        return redirect()->route( 'organization.index');
-
-        // return redirect()->route('organization.index');
+        return redirect()->route('organization.index');
     }
 
     /**
@@ -96,6 +94,6 @@ class OrganizationController extends Controller
     public function destroy(Organization $organization)
     {
         $organization->delete();
-        return redirect()->route( 'organization.index');
+        return redirect()->route('organization.index');
     }
 }
