@@ -1,7 +1,9 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 ## About This Project
-Job Seeker is a Job finding managing web application where you can post jobs to find the best suited candidate for your organization. The Web version of this project is still a in progress. But the API is ready to use, following the below documentation.
+Job Seeker is a Job finding managing web application where you can post jobs to find the best suited candidate for your organization. 
+
+The Web version of this project is still a in progress. But the API is ready to use, following the below documentation.
 
 Absolutely any feedback on the project is welcomed. 
 
