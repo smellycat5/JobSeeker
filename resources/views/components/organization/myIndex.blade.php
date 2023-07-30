@@ -5,8 +5,7 @@
             <div class="col-lg-8 mx-auto">
                 <div class="text-center mb-4">
                     <h3 class="top-c-sep">Explore Organizations</h3>
-                    <p>Want to Join us? <a href="{{ route('organization.create') }}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Register your Company today!</a></p>
-                    <p><a href="{{ route('organization.create') }}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">My Organizations</a> </p>
+                    <p>A List of Organizations currently registered with us.</p>
                 </div>
             </div>
         </div>
@@ -39,9 +38,16 @@
                                             <!-- Add more organization attributes as needed -->
                                         </ul>
                                     </div>
-                                    <div class="ml-auto">
+                                    <div class="ml-auto d-flex align-items-center">
+                                        <a href="{{ route('organization.edit', $organization->id) }}" class="btn btn-outline-info mr-2">edit</a>
                                         <!-- Add a link to view more details about the organization -->
-                                        <a href="{{ route('organization.show', $organization->id) }}" class="btn btn-light">View Details</a>
+                                        <a href="{{ route('organization.show', $organization->id) }}" class="btn btn-outline-primary mr-2">Details</a>
+                                        <!-- Add the delete button with trashcan icon -->
+                                        <form action="{{ route('organization.destroy', $organization->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this organization? Deleting Organization will also delete all of its job openings!');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-labeled btn-outline-danger"><i class="fa fa-trash"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -53,6 +59,5 @@
                 </div>
             </div>
         </div>
-    </div>
-      
+    </div
 @endsection

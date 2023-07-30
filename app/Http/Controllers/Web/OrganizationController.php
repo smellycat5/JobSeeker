@@ -40,7 +40,7 @@ class OrganizationController extends Controller
     {
         $user = auth()->id();
         $organizations= $this->organization->with('jobs')->where('user_id', "$user")->latest()->get();
-        return view('components.organization.index', compact('organizations'));
+        return view('components.organization.myIndex', compact('organizations'));
 
     }
     /**
@@ -67,7 +67,7 @@ class OrganizationController extends Controller
      */
     public function show(Organization $organization)
     {
-        return view('components.details', compact('organization'));
+        return view('components.organization.show', compact('organization'));
     }
 
     /**
@@ -94,6 +94,6 @@ class OrganizationController extends Controller
     public function destroy(Organization $organization)
     {
         $organization->delete();
-        return redirect()->route('organization.index');
+        return redirect()->route('myOrganization');
     }
 }

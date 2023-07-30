@@ -52,5 +52,6 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::Resource('job', JobController::class);
     Route::Resource('organization', OrganizationController::class);
+    Route::get('myorganizations',[OrganizationController::class, 'userIndex'])->name('myOrganization');
     Route::get('job/{id}/apply', [JobController::class,'apply'])->name('apply');
 });
